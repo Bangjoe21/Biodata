@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biodata Diri & Portofolio Interaktif | Modern & Vibrant Bio</title>
+    <meta name="description"
+        content="Website Biodata Diri Interaktif dengan tampilan warna cerah modern, portofolio karya, dan fitur edit live.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="theme-vibrant-light">
+
+    <!-- Background Animated Shapes -->
+    <div class="bg-gradient-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+        <div class="shape shape-4"></div>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="navbar-container">
+        <nav class="navbar glass-card">
+            <a href="#hero" class="nav-logo">
+                <span class="logo-icon"><i class="fa-solid fa-sparkles"></i></span>
+                <span class="logo-text">Bio<span class="highlight">Vibrant</span></span>
+            </a>
+
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#hero" class="nav-link active"><i class="fa-solid fa-house"></i> <span
+                            data-i18n="nav.home">Beranda</span></a></li>
+                <li><a href="#biodata" class="nav-link"><i class="fa-solid fa-user"></i> <span
+                            data-i18n="nav.bio">Biodata</span></a></li>
+                <li><a href="#skills" class="nav-link"><i class="fa-solid fa-code"></i> <span
+                            data-i18n="nav.skills">Keahlian</span></a></li>
+                <li><a href="#timeline" class="nav-link"><i class="fa-solid fa-briefcase"></i> <span
+                            data-i18n="nav.experience">Pengalaman</span></a></li>
+                <li><a href="#portfolio" class="nav-link"><i class="fa-solid fa-layer-group"></i> <span
+                            data-i18n="nav.portfolio">Portofolio</span></a></li>
+                <li><a href="#contact" class="nav-link"><i class="fa-solid fa-paper-plane"></i> <span
+                            data-i18n="nav.contact">Kontak</span></a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <button id="btnLangToggle" class="btn-action btn-secondary btn-lang-toggle"
+                    title="Ganti Bahasa / Switch Language">
+                    <i class="fa-solid fa-globe"></i> <span id="langToggleText">ID</span>
+                </button>
+                <button id="btnThemeToggle" class="btn-icon" title="Ubah Tema Warna">
+                    <i class="fa-solid fa-sun icon-sun"></i>
+                    <i class="fa-solid fa-moon icon-moon"></i>
+                </button>
+                <button id="btnOpenEdit" class="btn-action btn-secondary" title="Edit Biodata Live">
+                    <i class="fa-solid fa-pen-to-square"></i> <span data-i18n="nav.editBio">Edit Bio</span>
+                </button>
+                <button id="btnPrint" class="btn-action btn-primary" title="Cetak / Download PDF CV">
+                    <i class="fa-solid fa-file-pdf"></i> <span data-i18n="nav.printCv">Cetak CV</span>
+                </button>
+                <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Navigation Menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+        <!-- Hero Section -->
+        <section id="hero" class="hero-section">
+            <div class="hero-container">
+                <div class="hero-avatar-wrapper">
+                    <div class="avatar-glow"></div>
+                    <div class="avatar-border">
+                        <img src="avatar.png" alt="Foto Profil Rizky Ramadhan" id="displayAvatar" class="hero-avatar">
+                    </div>
+                    <div class="status-badge" id="displayStatusBadge">
+                        <span class="status-dot"></span>
+                        <span id="displayStatusText">Available for Work</span>
+                    </div>
+                    <div class="floating-tag tag-1"><i class="fa-solid fa-rocket"></i> Fast Learner</div>
+                    <div class="floating-tag tag-2"><i class="fa-solid fa-wand-magic-sparkles"></i> Creative Mind</div>
+                </div>
+
+                <div class="hero-info">
+                    <div class="greeting-pill">
+                        <span class="wave-emoji">👋</span> <span data-i18n="hero.greeting">Halo, Selamat Datang di Bio
+                            Profil Saya</span>
+                    </div>
+                    <h1 class="hero-name" id="displayName">Rizky Ramadhan, S.Kom</h1>
+                    <div class="typing-container">
+                        <span class="typing-prefix" data-i18n="hero.typingPrefix">Saya seorang </span>
+                        <span class="typing-text" id="typingText"></span>
+                        <span class="cursor">&nbsp;</span>
+                    </div>
+
+                    <p class="hero-bio" id="displayBio">
+                        Seorang Software Developer & Tech Enthusiast yang berdedikasi membangun solusi digital modern
+                        dengan desain interaktif, performa tinggi, dan pengalaman pengguna yang luar biasa.
+                    </p>
+
+                    <!-- Meta Tags Pills -->
+                    <div class="hero-meta-pills">
+                        <span class="meta-pill"><i class="fa-solid fa-location-dot"></i> <span
+                                id="displayLocation">Jakarta, Indonesia</span></span>
+                        <span class="meta-pill"><i class="fa-solid fa-graduation-cap"></i> <span
+                                data-i18n="hero.degree">Teknik Informatika</span></span>
+                        <span class="meta-pill"><i class="fa-solid fa-language"></i> ID (Native), EN (Fluent)</span>
+                    </div>
+
+                    <!-- Social Media Links -->
+                    <div class="social-links-wrapper">
+                        <a href="https://github.com/Bangjoe21" target="_blank" rel="noopener" class="social-btn github"
+                            title="GitHub">
+                            <i class="fa-brands fa-github"></i>
+                        </a>
+                        <a href="https://linkedin.com" target="_blank" rel="noopener" class="social-btn linkedin"
+                            title="LinkedIn">
+                            <i class="fa-brands fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://www.instagram.com/just.nopall_/" target="_blank" rel="noopener"
+                            class="social-btn instagram" title="Instagram">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="https://wa.me/6281234567890" target="_blank" id="socialWa" rel="noopener"
+                            class="social-btn whatsapp" title="WhatsApp">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </a>
+                        <a href="mailto:rizky.ramadhan@example.com" id="socialEmail" class="social-btn email"
+                            title="Email Direct">
+                            <i class="fa-solid fa-envelope"></i>
+                        </a>
+                    </div>
+
+                    <!-- CTA Buttons -->
+                    <div class="hero-cta-buttons">
+                        <a href="#contact" class="btn-cta btn-gradient-primary">
+                            <i class="fa-solid fa-paper-plane"></i> <span data-i18n="hero.ctaContact">Hubungi
+                                Saya</span>
+                        </a>
+                        <a href="#biodata" class="btn-cta btn-glass">
+                            <i class="fa-solid fa-address-card"></i> <span data-i18n="hero.ctaBio">Lihat Biodata
+                                Lengkap</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats Bar -->
+            <div class="stats-container glass-card">
+                <div class="stat-item">
+                    <div class="stat-icon icon-purple"><i class="fa-solid fa-award"></i></div>
+                    <div class="stat-details">
+                        <h3 class="stat-number" data-target="5">0</h3>
+                        <p class="stat-label" data-i18n="stats.exp">Tahun Pengalaman</p>
+                    </div>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <div class="stat-icon icon-pink"><i class="fa-solid fa-diagram-project"></i></div>
+                    <div class="stat-details">
+                        <h3 class="stat-number" data-target="42">0</h3>
+                        <p class="stat-label" data-i18n="stats.projects">Proyek Selesai</p>
+                    </div>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <div class="stat-icon icon-cyan"><i class="fa-solid fa-users"></i></div>
+                    <div class="stat-details">
+                        <h3 class="stat-number" data-target="28">0</h3>
+                        <p class="stat-label" data-i18n="stats.clients">Klien Puas</p>
+                    </div>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <div class="stat-icon icon-yellow"><i class="fa-solid fa-star"></i></div>
+                    <div class="stat-details">
+                        <h3 class="stat-number" data-target="100">0</h3>
+                        <p class="stat-label" data-i18n="stats.quality">% Komitmen Kualitas</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Biodata Section -->
+        <section id="biodata" class="section-container">
+            <div class="section-header">
+                <span class="section-tag"><i class="fa-solid fa-user-check"></i> Profil Informasi</span>
+                <h2 class="section-title">Biodata <span class="highlight">Diri Lengkap</span></h2>
+                <p class="section-subtitle">Rincian identitas pribadi, informasi kontak, latar belakang, dan hobi
+                    kegemaran.</p>
+            </div>
+
+            <div class="biodata-grid">
+                <!-- Data Pribadi Card -->
+                <div class="bio-card glass-card">
+                    <div class="card-header">
+                        <div class="card-icon-badge bg-gradient-1"><i class="fa-solid fa-id-card"></i></div>
+                        <h3>Identitas Pribadi</h3>
+                    </div>
+                    <div class="bio-list">
+                        <div class="bio-item">
+                            <span class="bio-label"><i class="fa-solid fa-user"></i> Nama Lengkap</span>
+                            <span class="bio-value" id="displayFullname">Naufal Syadid Achmad</span>
+                        </div>
+                        <div class="bio-item">
+                            <span class="bio-label"><i class="fa-solid fa-tag"></i> Nama Panggilan</span>
+                            <span class="bio-value" id="displayNickname">Naufal / Nopal</span>
+                        </div>
+                        <div class="bio-item">
+                            <span class="bio-label"><i class="fa-solid fa-cake-candles"></i> Tempat, Tgl Lahir</span>
+                            <span class="bio-value" id="displayPobDob">Samarinda, 21 April 2007</span>
+                        </div>
+                        <div class="bio-item">
+                            <span class="bio-label"><i class="fa-solid fa-venus-mars"></i> Jenis Kelamin</span>
+                            <span class="bio-value" id="displayGender">Laki-Laki</span>
+                        </div>
+                        <div class="bio-item">
+                            <span class="bio-label"><i class="fa-solid fa-hands-praying"></i> Agama</span>
+                            <span class="bio-value" id="displayReligion">Islam</span>
+                        </div>
+                        <div class="bio-item">
+                            <span class="bio-label"><i class="fa-solid fa-flag"></i> Kewarganegaraan</span>
+                            <span class="bio-value" id="displayNationality">Indonesia (WNI)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kontak & Alamat Card -->
+                <div class="bio-card glass-card">
+                    <div class="card-header">
+                        <div class="card-icon-badge bg-gradient-2"><i class="fa-solid fa-address-book"></i></div>
+                        <h3>Kontak & Domisili</h3>
+                    </div>
+                    <div class="bio-list">
+                        <div class="bio-item">
+                            <span class="bio-label"><i class="fa-solid fa-envelope"></i> Email Utama</span>
+                            <span class="bio-value" id="displayEmail">Naufalsyd21@gmail.com</span>
+                        </div>
+                        <div class="bio-item">
+                            <span class="bio-label"><i class="fa-solid fa-phone"></i> Nomor Telepon / WA</span>
+                            <span class="bio-value" id="displayPhone">+62 838-1818-9267</span>
+                        </div>
+                        <div class="bio-item">
+                            <span class="bio-label"><i class="fa-solid fa-house-user"></i> Alamat Lengkap</span>
+                            <span class="bio-value" id="displayAddress">Samarinda Jl.DamanHuri 2 GG.Manunggal</span>
+                        </div>
+                        <div class="bio-item">
+                            <span class="bio-label"><i class="fa-solid fa-heart"></i> Status Perkawinan</span>
+                            <span class="bio-value" id="displayMarital">Belum Menikah</span>
+                        </div>
+                        <div class="bio-item">
+                            <span class="bio-label"><i class="fa-solid fa-briefcase"></i> Pekerjaan Saat Ini</span>
+                            <span class="bio-value" id="displayJob">Mahasiswa</span>
+                        </div>
+                        <div class="bio-item">
+                            <span class="bio-label"><i class="fa-solid fa-globe"></i> Website Personal</span>
+                            <span class="bio-value" id="displayWebsite">NexusScotch.io</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hobi & Minat Card -->
+                <div class="bio-card glass-card">
+                    <div class="card-header">
+                        <div class="card-icon-badge bg-gradient-3"><i class="fa-solid fa-icons"></i></div>
+                        <h3>Minat & Hobi</h3>
+                    </div>
+                    <div class="hobbies-container" id="displayHobbies">
+                        <span class="hobby-chip chip-coral"><i class="fa-solid fa-code"></i> Coding & Open Source</span>
+                        <span class="hobby-chip chip-purple"><i class="fa-solid fa-compass-drafting"></i> UI/UX
+                            Designing</span>
+                        <span class="hobby-chip chip-cyan"><i class="fa-solid fa-headphones"></i> Music & Podcast</span>
+                        <span class="hobby-chip chip-green"><i class="fa-solid fa-plane"></i> Traveling &
+                            Photography</span>
+                        <span class="hobby-chip chip-yellow"><i class="fa-solid fa-gamepad"></i> Gaming &
+                            Strategy</span>
+                        <span class="hobby-chip chip-pink"><i class="fa-solid fa-book-open"></i> Tech Reading</span>
+                    </div>
+
+                    <h4 class="subcard-title"><i class="fa-solid fa-language"></i> Penguasaan Bahasa</h4>
+                    <div class="language-list">
+                        <div class="lang-item">
+                            <div class="lang-info">
+                                <span class="lang-name">Bahasa Indonesia</span>
+                                <span class="lang-level badge-native">Native / Anatif</span>
+                            </div>
+                            <div class="lang-bar">
+                                <div class="lang-progress" style="width: 100%;"></div>
+                            </div>
+                        </div>
+                        <div class="lang-item">
+                            <div class="lang-info">
+                                <span class="lang-name">Bahasa Inggris</span>
+                                <span class="lang-level badge-fluent">Professional Working</span>
+                            </div>
+                            <div class="lang-bar">
+                                <div class="lang-progress" style="width: 88%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="section-container">
+            <div class="section-header">
+                <span class="section-tag"><i class="fa-solid fa-microchip"></i> Kemampuan Teknis</span>
+                <h2 class="section-title">Keahlian & <span class="highlight">Kompetensi</span></h2>
+                <p class="section-subtitle">Teknologi dan keterampilan yang saya kuasai dalam pengembangan perangkat
+                    lunak.</p>
+            </div>
+
+            <!-- Skill Filter Buttons -->
+            <div class="filter-tabs">
+                <button class="filter-btn active" data-filter="all">Semua Skill</button>
+                <button class="filter-btn" data-filter="frontend">Frontend</button>
+                <button class="filter-btn" data-filter="backend">Backend & Cloud</button>
+                <button class="filter-btn" data-filter="design">Design & Tools</button>
+                <button class="filter-btn" data-filter="soft">Soft Skills</button>
+            </div>
+
+            <!-- Skill Cards Grid -->
+            <div class="skills-grid" id="skillsGrid">
+                <!-- HTML/CSS/JS -->
+                <div class="skill-card glass-card" data-category="frontend">
+                    <div class="skill-header">
+                        <div class="skill-icon icon-orange"><i class="fa-brands fa-html5"></i></div>
+                        <div class="skill-title-wrap">
+                            <h4>HTML5 & CSS3 Modern</h4>
+                            <span class="skill-badge badge-expert">Expert</span>
+                        </div>
+                    </div>
+                    <p class="skill-desc">Responsive Layout, CSS Grid, Flexbox, Animation, Dynamic Themes,
+                        Accessibility.</p>
+                    <div class="skill-bar-wrapper">
+                        <div class="skill-bar">
+                            <div class="skill-progress bar-orange" style="width: 95%;"></div>
+                        </div>
+                        <span class="skill-percent">95%</span>
+                    </div>
+                </div>
+
+                <!-- JavaScript / ES6+ -->
+                <div class="skill-card glass-card" data-category="frontend">
+                    <div class="skill-header">
+                        <div class="skill-icon icon-yellow"><i class="fa-brands fa-square-js"></i></div>
+                        <div class="skill-title-wrap">
+                            <h4>JavaScript / TypeScript</h4>
+                            <span class="skill-badge badge-expert">Expert</span>
+                        </div>
+                    </div>
+                    <p class="skill-desc">ES6+, Async/Await, DOM Manipulation, Web APIs, State Management, OOP.</p>
+                    <div class="skill-bar-wrapper">
+                        <div class="skill-bar">
+                            <div class="skill-progress bar-yellow" style="width: 90%;"></div>
+                        </div>
+                        <span class="skill-percent">90%</span>
+                    </div>
+                </div>
+
+                <!-- React / Next.js -->
+                <div class="skill-card glass-card" data-category="frontend">
+                    <div class="skill-header">
+                        <div class="skill-icon icon-cyan"><i class="fa-brands fa-react"></i></div>
+                        <div class="skill-title-wrap">
+                            <h4>React.js & Next.js</h4>
+                            <span class="skill-badge badge-advanced">Advanced</span>
+                        </div>
+                    </div>
+                    <p class="skill-desc">Component Architecture, Hooks, Context API, SSR, Router, Tailwind Integration.
+                    </p>
+                    <div class="skill-bar-wrapper">
+                        <div class="skill-bar">
+                            <div class="skill-progress bar-cyan" style="width: 88%;"></div>
+                        </div>
+                        <span class="skill-percent">88%</span>
+                    </div>
+                </div>
+
+                <!-- Node.js & Express -->
+                <div class="skill-card glass-card" data-category="backend">
+                    <div class="skill-header">
+                        <div class="skill-icon icon-green"><i class="fa-brands fa-node-js"></i></div>
+                        <div class="skill-title-wrap">
+                            <h4>Node.js & Express</h4>
+                            <span class="skill-badge badge-advanced">Advanced</span>
+                        </div>
+                    </div>
+                    <p class="skill-desc">RESTful API Design, Middleware, JWT Auth, Microservices, Performance Tuning.
+                    </p>
+                    <div class="skill-bar-wrapper">
+                        <div class="skill-bar">
+                            <div class="skill-progress bar-green" style="width: 85%;"></div>
+                        </div>
+                        <span class="skill-percent">85%</span>
+                    </div>
+                </div>
+
+                <!-- Database (MySQL / MongoDB / PostgreSQL) -->
+                <div class="skill-card glass-card" data-category="backend">
+                    <div class="skill-header">
+                        <div class="skill-icon icon-purple"><i class="fa-solid fa-database"></i></div>
+                        <div class="skill-title-wrap">
+                            <h4>PostgreSQL & MongoDB</h4>
+                            <span class="skill-badge badge-advanced">Advanced</span>
+                        </div>
+                    </div>
+                    <p class="skill-desc">Relational Schema, NoSQL Document Store, Query Optimization, ORM/ODM (Prisma,
+                        Mongoose).</p>
+                    <div class="skill-bar-wrapper">
+                        <div class="skill-bar">
+                            <div class="skill-progress bar-purple" style="width: 82%;"></div>
+                        </div>
+                        <span class="skill-percent">82%</span>
+                    </div>
+                </div>
+
+                <!-- UI/UX & Figma -->
+                <div class="skill-card glass-card" data-category="design">
+                    <div class="skill-header">
+                        <div class="skill-icon icon-pink"><i class="fa-brands fa-figma"></i></div>
+                        <div class="skill-title-wrap">
+                            <h4>Figma & UI/UX Design</h4>
+                            <span class="skill-badge badge-advanced">Advanced</span>
+                        </div>
+                    </div>
+                    <p class="skill-desc">Wireframing, High-fidelity Prototyping, Design Systems, User Research,
+                        Micro-interactions.</p>
+                    <div class="skill-bar-wrapper">
+                        <div class="skill-bar">
+                            <div class="skill-progress bar-pink" style="width: 86%;"></div>
+                        </div>
+                        <span class="skill-percent">86%</span>
+                    </div>
+                </div>
+
+                <!-- Git & DevOps -->
+                <div class="skill-card glass-card" data-category="backend">
+                    <div class="skill-header">
+                        <div class="skill-icon icon-coral"><i class="fa-brands fa-git-alt"></i></div>
+                        <div class="skill-title-wrap">
+                            <h4>Git, Docker & CI/CD</h4>
+                            <span class="skill-badge badge-proficient">Proficient</span>
+                        </div>
+                    </div>
+                    <p class="skill-desc">Version Control, Branching Workflows, Containerization, Automated Deployment
+                        (Vercel, GCP).</p>
+                    <div class="skill-bar-wrapper">
+                        <div class="skill-bar">
+                            <div class="skill-progress bar-coral" style="width: 80%;"></div>
+                        </div>
+                        <span class="skill-percent">80%</span>
+                    </div>
+                </div>
+
+                <!-- Problem Solving & Teamwork -->
+                <div class="skill-card glass-card" data-category="soft">
+                    <div class="skill-header">
+                        <div class="skill-icon icon-yellow"><i class="fa-solid fa-lightbulb"></i></div>
+                        <div class="skill-title-wrap">
+                            <h4>Problem Solving & Adaptabilitas</h4>
+                            <span class="skill-badge badge-expert">Expert</span>
+                        </div>
+                    </div>
+                    <p class="skill-desc">Analisis Masalah, Pemikiran Kritis, Komunikasi Tim, Manajemen Waktu, Fast
+                        Learning.</p>
+                    <div class="skill-bar-wrapper">
+                        <div class="skill-bar">
+                            <div class="skill-progress bar-yellow" style="width: 92%;"></div>
+                        </div>
+                        <span class="skill-percent">92%</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Timeline Experience & Education -->
+        <section id="timeline" class="section-container">
+            <div class="section-header">
+                <span class="section-tag"><i class="fa-solid fa-timeline"></i> Rekam Jejak</span>
+                <h2 class="section-title">Pengalaman & <span class="highlight">Pendidikan</span></h2>
+                <p class="section-subtitle">Perjalanan karier profesional dan latar belakang akademis saya.</p>
+            </div>
+
+            <div class="timeline-container">
+                <!-- Timeline Line -->
+                <div class="timeline-line"></div>
+
+                <!-- Item 1 -->
+                <div class="timeline-item left">
+                    <div class="timeline-dot dot-purple"><i class="fa-solid fa-laptop-code"></i></div>
+                    <div class="timeline-content glass-card">
+                        <div class="timeline-date"><i class="fa-regular fa-calendar-check"></i> 2024 - Sekarang</div>
+                        <h3 class="timeline-title">Senior Web Developer</h3>
+                        <h4 class="timeline-company"><i class="fa-solid fa-building"></i> PT Nusantara Tech Innovations
+                        </h4>
+                        <p class="timeline-desc">Memimpin tim frontend dalam mengembangkan aplikasi manajemen cloud
+                            enterprise skala besar, meningkatkan kecepatan muat sebesar 40%, dan mengimplementasikan
+                            arsitektur micro-frontend.</p>
+                        <div class="timeline-tags">
+                            <span class="t-tag">React.js</span>
+                            <span class="t-tag">TypeScript</span>
+                            <span class="t-tag">Node.js</span>
+                            <span class="t-tag">Leadership</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="timeline-item right">
+                    <div class="timeline-dot dot-pink"><i class="fa-solid fa-pen-nib"></i></div>
+                    <div class="timeline-content glass-card">
+                        <div class="timeline-date"><i class="fa-regular fa-calendar-check"></i> 2022 - 2024</div>
+                        <h3 class="timeline-title">UI/UX & Frontend Specialist</h3>
+                        <h4 class="timeline-company"><i class="fa-solid fa-building"></i> Digital Creative Agency</h4>
+                        <p class="timeline-desc">Merancang wireframe, prototype interaktif di Figma, dan
+                            mengimplementasikannya menjadi kode HTML/CSS/JS yang responsif serta ramah SEO untuk lebih
+                            dari 20 klien startup.</p>
+                        <div class="timeline-tags">
+                            <span class="t-tag">Figma</span>
+                            <span class="t-tag">Vue.js</span>
+                            <span class="t-tag">Sass/SCSS</span>
+                            <span class="t-tag">SEO</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="timeline-item left">
+                    <div class="timeline-dot dot-cyan"><i class="fa-solid fa-graduation-cap"></i></div>
+                    <div class="timeline-content glass-card">
+                        <div class="timeline-date"><i class="fa-regular fa-calendar-check"></i> 2018 - 2022</div>
+                        <h3 class="timeline-title">S1 Teknik Informatika</h3>
+                        <h4 class="timeline-company"><i class="fa-solid fa-university"></i> Universitas Indonesia</h4>
+                        <p class="timeline-desc">Lulus dengan predikat <strong>Cum Laude (IPK 3.85/4.00)</strong>. Aktif
+                            di Organisasi Himpunan Mahasiswa Informatika dan ketua divisi Web & Publication.</p>
+                        <div class="timeline-tags">
+                            <span class="t-tag">Cum Laude</span>
+                            <span class="t-tag">Algoritma & Struktur Data</span>
+                            <span class="t-tag">Rekayasa Perangkat Lunak</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 4 -->
+                <div class="timeline-item right">
+                    <div class="timeline-dot dot-yellow"><i class="fa-solid fa-certificate"></i></div>
+                    <div class="timeline-content glass-card">
+                        <div class="timeline-date"><i class="fa-regular fa-calendar-check"></i> 2023</div>
+                        <h3 class="timeline-title">Sertifikasi Fullstack & Web Security</h3>
+                        <h4 class="timeline-company"><i class="fa-solid fa-shield-halved"></i> Global Tech Certification
+                            Institute</h4>
+                        <p class="timeline-desc">Menyelesaikan sertifikasi intensif dalam keahlian arsitektur cloud,
+                            keamanan web OWASP, dan pengujian performa tinggi.</p>
+                        <div class="timeline-tags">
+                            <span class="t-tag">Certified Developer</span>
+                            <span class="t-tag">Web Security</span>
+                            <span class="t-tag">REST API</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section id="portfolio" class="section-container">
+            <div class="section-header">
+                <span class="section-tag"><i class="fa-solid fa-box-archive"></i> Galeri Proyek</span>
+                <h2 class="section-title">Portofolio <span class="highlight">Karya Pilihan</span></h2>
+                <p class="section-subtitle">Beberapa hasil karya aplikasi web dan sistem yang telah saya kembangkan.</p>
+            </div>
+
+            <div class="portfolio-grid">
+                <!-- Project 1 -->
+                <div class="portfolio-card glass-card">
+                    <div class="portfolio-thumb">
+                        <div class="thumb-placeholder bg-gradient-p1">
+                            <i class="fa-solid fa-store"></i>
+                        </div>
+                        <span class="portfolio-badge">Web Application</span>
+                    </div>
+                    <div class="portfolio-body">
+                        <h3>Sistem Kasir Cloud (Smart POS)</h3>
+                        <p>Aplikasi kasir multi-outlet dengan fitur inventaris real-time, laporan penjualan grafik, dan
+                            integrasi pembayaran QRIS.</p>
+                        <div class="portfolio-tech">
+                            <span>React</span>
+                            <span>Node.js</span>
+                            <span>PostgreSQL</span>
+                        </div>
+                        <div class="portfolio-links">
+                            <a href="#" class="btn-project-link"><i class="fa-solid fa-up-right-from-square"></i> Demo
+                                Live</a>
+                            <a href="#" class="btn-project-link secondary"><i class="fa-brands fa-github"></i>
+                                Source</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="portfolio-card glass-card">
+                    <div class="portfolio-thumb">
+                        <div class="thumb-placeholder bg-gradient-p2">
+                            <i class="fa-solid fa-chart-line"></i>
+                        </div>
+                        <span class="portfolio-badge">Dashboard UI</span>
+                    </div>
+                    <div class="portfolio-body">
+                        <h3>Realtime Business Analytics</h3>
+                        <p>Dashboard pemantauan performa bisnis secara interaktif dengan sistem notifikasi pintar dan
+                            visualisasi data tinggi.</p>
+                        <div class="portfolio-tech">
+                            <span>Vue.js</span>
+                            <span>Chart.js</span>
+                            <span>Tailwind</span>
+                        </div>
+                        <div class="portfolio-links">
+                            <a href="#" class="btn-project-link"><i class="fa-solid fa-up-right-from-square"></i> Demo
+                                Live</a>
+                            <a href="#" class="btn-project-link secondary"><i class="fa-brands fa-github"></i>
+                                Source</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="portfolio-card glass-card">
+                    <div class="portfolio-thumb">
+                        <div class="thumb-placeholder bg-gradient-p3">
+                            <i class="fa-solid fa-wallet"></i>
+                        </div>
+                        <span class="portfolio-badge">Mobile Web App</span>
+                    </div>
+                    <div class="portfolio-body">
+                        <h3>Smart Personal Finance Manager</h3>
+                        <p>Aplikasi pengelola keuangan pribadi dengan pencatatan otomatis, kalkulator target tabungan,
+                            dan ekspor laporan bulanan.</p>
+                        <div class="portfolio-tech">
+                            <span>TypeScript</span>
+                            <span>Next.js</span>
+                            <span>PWA</span>
+                        </div>
+                        <div class="portfolio-links">
+                            <a href="#" class="btn-project-link"><i class="fa-solid fa-up-right-from-square"></i> Demo
+                                Live</a>
+                            <a href="#" class="btn-project-link secondary"><i class="fa-brands fa-github"></i>
+                                Source</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section-container">
+            <div class="section-header">
+                <span class="section-tag"><i class="fa-solid fa-comments"></i> Terhubung</span>
+                <h2 class="section-title">Hubungi <span class="highlight">Saya</span></h2>
+                <p class="section-subtitle">Tertarik bekerjasama atau ingin bertanya sesuatu? Silakan kirimkan pesan di
+                    bawah ini.</p>
+            </div>
+
+            <div class="contact-wrapper">
+                <!-- Direct Info Card -->
+                <div class="contact-info-card glass-card">
+                    <h3>Informasi Kontak</h3>
+                    <p>Jangan ragu untuk menghubungi saya melalui kontak berikut atau formulir langsung.</p>
+
+                    <div class="contact-methods">
+                        <div class="c-method-item">
+                            <div class="c-icon bg-gradient-1"><i class="fa-solid fa-envelope"></i></div>
+                            <div>
+                                <span class="c-label">Email Direct</span>
+                                <a href="mailto:rizky.ramadhan@example.com" class="c-val"
+                                    id="contactInfoEmail">rizky.ramadhan@example.com</a>
+                            </div>
+                        </div>
+
+                        <div class="c-method-item">
+                            <div class="c-icon bg-gradient-2"><i class="fa-brands fa-whatsapp"></i></div>
+                            <div>
+                                <span class="c-label">WhatsApp Chat</span>
+                                <a href="https://wa.me/6281234567890" target="_blank" rel="noopener" class="c-val"
+                                    id="contactInfoPhone">+62 812-3456-7890</a>
+                            </div>
+                        </div>
+
+                        <div class="c-method-item">
+                            <div class="c-icon bg-gradient-3"><i class="fa-solid fa-location-dot"></i></div>
+                            <div>
+                                <span class="c-label">Lokasi Saat Ini</span>
+                                <span class="c-val" id="contactInfoLocation">Jakarta Selatan, DKI Jakarta</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="quick-wa-btn-container">
+                        <a href="https://wa.me/6281234567890?text=Halo%20Rizky,%20saya%20tertarik%20bekerjasama."
+                            id="btnWaDirect" target="_blank" rel="noopener" class="btn-wa-direct">
+                            <i class="fa-brands fa-whatsapp"></i> Kirim Pesan via WhatsApp Instant
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="contact-form-card glass-card">
+                    <form id="contactForm" onsubmit="return false;">
+                        <div class="form-group">
+                            <label for="formName"><i class="fa-solid fa-user"></i> Nama Anda</label>
+                            <input type="text" id="formName" class="form-control" placeholder="Masukkan nama Anda..."
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label for="formEmail"><i class="fa-solid fa-envelope"></i> Alamat Email</label>
+                            <input type="email" id="formEmail" class="form-control" placeholder="nama@email.com..."
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label for="formSubject"><i class="fa-solid fa-heading"></i> Subjek Pesan</label>
+                            <input type="text" id="formSubject" class="form-control"
+                                placeholder="Contoh: Penawaran Project / Diskusi" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="formMessage"><i class="fa-solid fa-message"></i> Isi Pesan</label>
+                            <textarea id="formMessage" rows="4" class="form-control"
+                                placeholder="Tuliskan pesan Anda di sini..." required></textarea>
+                        </div>
+                        <button type="submit" id="btnSubmitMessage" class="btn-cta btn-gradient-primary btn-block">
+                            <i class="fa-solid fa-paper-plane"></i> Kirim Pesan Sekarang
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <span class="logo-icon"><i class="fa-solid fa-sparkles"></i></span>
+                <span class="logo-text">Bio<span class="highlight">Vibrant</span></span>
+            </div>
+            <p class="footer-copy">&copy; 2026 <span id="footerName">Rizky Ramadhan</span>. Hak Cipta Dilindungi. Dibuat
+                dengan Warna Cerah & Animasi Interaktif.</p>
+            <div class="footer-top-link">
+                <a href="#hero" class="btn-top" title="Kembali ke Atas"><i class="fa-solid fa-arrow-up"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- EDIT BIODATA MODAL -->
+    <div class="modal-overlay" id="editModalOverlay">
+        <div class="modal-card glass-card">
+            <div class="modal-header">
+                <h3><i class="fa-solid fa-pen-to-square"></i> Edit Biodata Live</h3>
+                <button class="modal-close" id="btnCloseEdit">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p class="modal-subtitle">Ubah informasi di bawah ini. Perubahan akan langsung tampil di website dan
+                    tersimpan di browser Anda!</p>
+                <form id="editBioForm">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="editFullname">Nama Lengkap & Gelar</label>
+                            <input type="text" id="editFullname" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="editJob">Profesi / Job Title</label>
+                            <input type="text" id="editJob" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="editPobDob">Tempat, Tanggal Lahir</label>
+                            <input type="text" id="editPobDob" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="editGender">Jenis Kelamin</label>
+                            <select id="editGender" class="form-control">
+                                <option value="Laki-Laki">Laki-Laki</option>
+                                <option value="Perempuan">Perempuan</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="editReligion">Agama</label>
+                            <input type="text" id="editReligion" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="editNationality">Kewarganegaraan</label>
+                            <input type="text" id="editNationality" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="editEmail">Email Utama</label>
+                            <input type="email" id="editEmail" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="editPhone">Nomor Telepon / WhatsApp</label>
+                            <input type="text" id="editPhone" class="form-control">
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="editAddress">Alamat Domisili</label>
+                            <input type="text" id="editAddress" class="form-control">
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="editBio">Ringkasan Bio Singkat</label>
+                            <textarea id="editBio" rows="3" class="form-control"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="editStatus">Status Ketersediaan</label>
+                            <input type="text" id="editStatus" class="form-control"
+                                placeholder="Contoh: Available for Work">
+                        </div>
+                        <div class="form-group">
+                            <label for="editLocation">Lokasi Singkat</label>
+                            <input type="text" id="editLocation" class="form-control"
+                                placeholder="Contoh: Jakarta, Indonesia">
+                        </div>
+                    </div>
+                    <div class="modal-actions">
+                        <button type="button" id="btnResetDefault" class="btn-action btn-danger">
+                            <i class="fa-solid fa-rotate-left"></i> Reset Bawaan
+                        </button>
+                        <button type="submit" class="btn-cta btn-gradient-primary">
+                            <i class="fa-solid fa-check"></i> Simpan Perubahan Live
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Custom JS -->
+    <script src="app.js"></script>
+</body>
+
+</html>
