@@ -7,6 +7,49 @@ document.addEventListener('DOMContentLoaded', () => {
     // ----------------------------------------------------------------------
     // 1. Default Data & State Management
     // ----------------------------------------------------------------------
+    const translations = {
+        id: {
+            "nav.home": "Beranda",
+            "nav.bio": "Biodata",
+            "nav.skills": "Keahlian",
+            "nav.experience": "Pengalaman",
+            "nav.portfolio": "Portofolio",
+            "nav.contact": "Kontak",
+            "nav.editBio": "Edit Bio",
+            "nav.printCv": "Cetak CV",
+            "hero.greeting": "Halo, Selamat Datang di Bio Profil Saya",
+            "hero.typingPrefix": "Saya seorang ",
+            "hero.degree": "Teknik Informatika",
+            "hero.ctaContact": "Hubungi Saya",
+            "hero.ctaBio": "Lihat Biodata Lengkap",
+            "stats.exp": "Tahun Pengalaman",
+            "stats.projects": "Proyek Selesai",
+            "stats.clients": "Klien Puas",
+            "stats.quality": "% Komitmen Kualitas"
+        },
+        en: {
+            "nav.home": "Home",
+            "nav.bio": "Biography",
+            "nav.skills": "Skills",
+            "nav.experience": "Experience",
+            "nav.portfolio": "Portfolio",
+            "nav.contact": "Contact",
+            "nav.editBio": "Edit Bio",
+            "nav.printCv": "Print CV",
+            "hero.greeting": "Hello, Welcome to My Bio Profile",
+            "hero.typingPrefix": "I am a ",
+            "hero.degree": "Informatics Engineering",
+            "hero.ctaContact": "Contact Me",
+            "hero.ctaBio": "View Full Bio",
+            "stats.exp": "Years Experience",
+            "stats.projects": "Projects Completed",
+            "stats.clients": "Satisfied Clients",
+            "stats.quality": "% Quality Commitment"
+        }
+    };
+    
+    let currentLang = localStorage.getItem('vibrant_lang') || 'id';
+
     const defaultData = {
         fullname: "Naufal Syadid Achmad",
         nickname: "Naufal / Nopal",
@@ -81,6 +124,8 @@ document.addEventListener('DOMContentLoaded', () => {
         btnCloseEdit: document.getElementById('btnCloseEdit'),
         editBioForm: document.getElementById('editBioForm'),
         btnResetDefault: document.getElementById('btnResetDefault'),
+        btnLangToggle: document.getElementById('btnLangToggle'),
+        langToggleText: document.getElementById('langToggleText'),
 
         // Modal Form Inputs
         editFullname: document.getElementById('editFullname'),
@@ -146,7 +191,20 @@ document.addEventListener('DOMContentLoaded', () => {
         if (DOM.footerName) DOM.footerName.textContent = currentBioData.fullname;
     }
 
+    function applyTranslations() {
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (translations[currentLang] && translations[currentLang][key]) {
+                el.textContent = translations[currentLang][key];
+            }
+        });
+        if (DOM.langToggleText) {
+            DOM.langToggleText.textContent = currentLang.toUpperCase();
+        }
+    }
+
     renderBioUI();
+    applyTranslations();
 
     // ----------------------------------------------------------------------
     // 4. Typewriter Animation Effect
@@ -425,6 +483,18 @@ document.addEventListener('DOMContentLoaded', () => {
             window.location.href = mailtoUrl;
 
             DOM.contactForm.reset();
+        });
+    }
+
+    // ----------------------------------------------------------------------
+    // 11.5 Language Toggle Handler
+    // ----------------------------------------------------------------------
+    if (DOM.btnLangToggle) {
+        DOM.btnLangToggle.addEventListener('click', () => {
+            currentLang = currentLang === 'id' ? 'en' : 'id';
+            localStorage.setItem('vibrant_lang', currentLang);
+            applyTranslations();
+            showToast(currentLang === 'id' ? 'Bahasa diubah ke Indonesia!' : 'Language switched to English!', 'info');
         });
     }
 
