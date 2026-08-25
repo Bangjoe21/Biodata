@@ -64,9 +64,6 @@
                     <i class="fa-solid fa-sun icon-sun"></i>
                     <i class="fa-solid fa-moon icon-moon"></i>
                 </button>
-                <button id="btnOpenEdit" class="btn-action btn-secondary" title="Edit Biodata Live">
-                    <i class="fa-solid fa-pen-to-square"></i> <span data-i18n="nav.editBio">Edit Bio</span>
-                </button>
                 <button id="btnPrint" class="btn-action btn-primary" title="Cetak / Download PDF CV">
                     <i class="fa-solid fa-file-pdf"></i> <span data-i18n="nav.printCv">Cetak CV</span>
                 </button>
@@ -800,84 +797,7 @@
         </div>
     </footer>
 
-    <!-- EDIT BIODATA MODAL -->
-    <div class="modal-overlay" id="editModalOverlay">
-        <div class="modal-card glass-card">
-            <div class="modal-header">
-                <h3><i class="fa-solid fa-pen-to-square"></i> Edit Biodata Live</h3>
-                <button class="modal-close" id="btnCloseEdit">&times;</button>
-            </div>
-            <div class="modal-body">
-                <p class="modal-subtitle">Ubah informasi di bawah ini. Perubahan akan langsung tampil di website dan
-                    tersimpan di browser Anda!</p>
-                <form id="editBioForm">
-                    <div class="form-grid">
-                        <div class="form-group">
-                            <label for="editFullname">Nama Lengkap & Gelar</label>
-                            <input type="text" id="editFullname" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="editJob">Profesi / Job Title</label>
-                            <input type="text" id="editJob" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="editPobDob">Tempat, Tanggal Lahir</label>
-                            <input type="text" id="editPobDob" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="editGender">Jenis Kelamin</label>
-                            <select id="editGender" class="form-control">
-                                <option value="Laki-Laki">Laki-Laki</option>
-                                <option value="Perempuan">Perempuan</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="editReligion">Agama</label>
-                            <input type="text" id="editReligion" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="editNationality">Kewarganegaraan</label>
-                            <input type="text" id="editNationality" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="editEmail">Email Utama</label>
-                            <input type="email" id="editEmail" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="editPhone">Nomor Telepon / WhatsApp</label>
-                            <input type="text" id="editPhone" class="form-control">
-                        </div>
-                        <div class="form-group full-width">
-                            <label for="editAddress">Alamat Domisili</label>
-                            <input type="text" id="editAddress" class="form-control">
-                        </div>
-                        <div class="form-group full-width">
-                            <label for="editBio">Ringkasan Bio Singkat</label>
-                            <textarea id="editBio" rows="3" class="form-control"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="editStatus">Status Ketersediaan</label>
-                            <input type="text" id="editStatus" class="form-control"
-                                placeholder="Contoh: Available for Work">
-                        </div>
-                        <div class="form-group">
-                            <label for="editLocation">Lokasi Singkat</label>
-                            <input type="text" id="editLocation" class="form-control"
-                                placeholder="Contoh: Jakarta, Indonesia">
-                        </div>
-                    </div>
-                    <div class="modal-actions">
-                        <button type="button" id="btnResetDefault" class="btn-action btn-danger">
-                            <i class="fa-solid fa-rotate-left"></i> Reset Bawaan
-                        </button>
-                        <button type="submit" class="btn-cta btn-gradient-primary">
-                            <i class="fa-solid fa-check"></i> Simpan Perubahan Live
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
+
 
     <!-- Toast Notification Container -->
     <div class="toast-container" id="toastContainer"></div>
