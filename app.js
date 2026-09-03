@@ -641,23 +641,61 @@ if (DOM.btnPrint) {
 }
 
 // ----------------------------------------------------------------------
-// 11. Contact Form Submit Handler
+// 11. Contact Form Submit Handler (Direct Send via FormSubmit AJAX)
 // ----------------------------------------------------------------------
 if (DOM.contactForm) {
-    DOM.contactForm.addEventListener('submit', (e) => {
+    DOM.contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-        const name = document.getElementById('formName').value;
-        const email = document.getElementById('formEmail').value;
-        const subject = document.getElementById('formSubject').value;
-        const message = document.getElementById('formMessage').value;
+        const submitBtn = document.getElementById('btnSubmitMessage');
+        const originalBtnHTML = submitBtn ? submitBtn.innerHTML : '';
 
-        showToast(`Terima kasih ${name}, pesan Anda berhasil dikirim!`, 'success');
+        const name = document.getElementById('formName').value.trim();
+        const email = document.getElementById('formEmail').value.trim();
+        const subject = document.getElementById('formSubject').value.trim();
+        const message = document.getElementById('formMessage').value.trim();
+        const recipientEmail = currentBioData.email || 'Naufalsyd21@gmail.com';
 
-        // Open mailto fallback
-        const mailtoUrl = `mailto:${currentBioData.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Dari: ${name} (${email})\n\n${message}`)}`;
-        window.location.href = mailtoUrl;
+        if (submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Mengirim Pesan...';
+        }
 
-        DOM.contactForm.reset();
+        try {
+            const response = await fetch(`https://formsubmit.co/ajax/${recipientEmail}`, {
+                method: 'POST',
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: name,
+                    email: email,
+                    _subject: `[Website Portfolio] Pesan dari ${name}: ${subject}`,
+                    subject: subject,
+                    message: message
+                })
+            });
+
+            const result = await response.json();
+
+            if (response.ok || result.success === "true" || result.success === true) {
+                showToast(`Terima kasih ${name}, pesan Anda telah berhasil terkirim!`, 'success');
+                DOM.contactForm.reset();
+            } else {
+                throw new Error("Gagal mengirim via server FormSubmit");
+            }
+        } catch (err) {
+            console.warn("Direct send error, fallback ke mailto:", err);
+            showToast(`Mengalihkan ke aplikasi email...`, 'info');
+            const mailtoUrl = `mailto:${recipientEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Dari: ${name} (${email})\n\n${message}`)}`;
+            window.location.href = mailtoUrl;
+            DOM.contactForm.reset();
+        } finally {
+            if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnHTML;
+            }
+        }
     });
 }
 
